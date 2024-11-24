@@ -11,7 +11,10 @@ function onClick() {
 <template>
   <v-responsive class="border rounded">
     <v-app :theme="theme">
-      <v-app-bar class="px-3" color="light-blue-lighten-2">
+      <v-app-bar
+        class="px-3"
+        :color="theme === 'light' ? 'light-green' : 'dark'"
+      >
         <v-spacer></v-spacer>
 
         <v-btn
@@ -29,6 +32,9 @@ function onClick() {
           <slot name="content"></slot>
         </v-container>
       </v-main>
+      <v-footer :color="theme === 'light' ? 'light-green' : 'dark'" border app
+        >AgriHuB</v-footer
+      >
     </v-app>
   </v-responsive>
 </template>

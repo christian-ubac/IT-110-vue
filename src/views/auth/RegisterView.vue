@@ -1,79 +1,56 @@
 <script setup>
-// eslint-disable-next-line no-unused-vars
 import { ref } from 'vue'
 import AppLayout from '@/components/layout/AppLayout.vue'
+import RegisterForm from '@/components/auth/Registration.vue'
+import { useDisplay } from 'vuetify'
+
+const showPassword = ref(false)
+const userName = ref('')
+const password = ref('')
+
+const userNameRules = [v => !!v || 'Name is required']
+const passwordRules = [v => !!v || 'Password is required']
+const { mobile } = useDisplay()
+
+const handleSubmit = () => {
+  if (userName.value && password.value) {
+    // Handle login logic here
+    console.log('Logged in with:', userName.value, password.value)
+  }
+}
 </script>
 
 <template>
   <AppLayout>
     <template #content>
-      <!-- ! 1 row -->
-      <v-row class="d-flex justify-center">
-        <!-- ! 1 col -->
-        <v-col cols="12" md="6" class="mx-auto">
-          <!-- !! v card -->
-          <v-card class="glass-card border-thin" text="">
-            <v-form class="px-3 pb-3" fast-fail @submit.prevent>
-              <!-- !! first name -->
-              <v-text-field
-                v-model="userName"
-                :rules="userNameRules"
-                label="First Name"
-                variant="outlined"
-              ></v-text-field>
-
-              <!-- !! last name -->
-              <v-text-field
-                v-model="userName"
-                :rules="userNameRules"
-                label="Last Name"
-                variant="outlined"
-              ></v-text-field>
-
-              <!-- !! Email -->
-              <v-text-field
-                v-model="userName"
-                :rules="userNameRules"
-                label="Email"
-                variant="outlined"
-              ></v-text-field>
-
-              <!-- !! Password -->
-              <v-text-field
-                v-model="password"
-                :rules="passwordRules"
-                label="Password"
-                variant="outlined"
-                type="password"
-              ></v-text-field>
-
-              <!-- !! Confirm Password -->
-              <v-text-field
-                v-model="password"
-                :rules="passwordRules"
-                label="Confirm Password"
-                variant="outlined"
-                type="password"
-              ></v-text-field>
-
-              <v-btn
-                block
-                variant="outlined"
-                rounded="xl"
-                size="x-large"
-                class="mt-2"
-                type="submit"
-                >Register</v-btn
-              >
-              <p class="text-center mt-3">Forgot Password?</p>
-              <br />
-              <p class="text-center">
-                Already have an account?
-                <RouterLink to="/" class="text-primary">Login</RouterLink>
-              </p>
-              <br /> </v-form
-          ></v-card>
-        </v-col> </v-row
-    ></template>
+      <v-row>
+        <v-col cols="12" md="6" class="mx-auto pt-16">
+          <v-card class="mx-auto" elevation="24">
+            <v-card-title class="text-center">
+              <v-img
+                class="mx-auto"
+                src="/public/images/agri2.jpg"
+                :width="mobile ? '75' : '25%'"
+              ></v-img>
+              <h3 class="font-weight-black text-center">AgriHub</h3>
+              <p class="font-weight-bold">Login Form</p>
+            </v-card-title>
+            <v-card-text class="bg-surface-light pt-4">
+              <v-divider class="my-5"></v-divider>
+             <RegistrationForm>
+              
+             </RegistrationForm>
+              <v-divider class="my-5"></v-divider>
+              <h5 class="text-center">
+                Don't have an account?
+                <RouterLink class="text-primary" to="/register"
+                  >Click here to Register</RouterLink
+                >
+              </h5>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </template>
   </AppLayout>
 </template>
