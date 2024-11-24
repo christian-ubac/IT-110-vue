@@ -14,6 +14,23 @@ import AppLayout from '@/components/layout/AppLayout.vue'
           <!-- !! v card -->
           <v-card class="glass-card border-thin" text="">
             <v-form class="px-3 pb-3" fast-fail @submit.prevent>
+              <!-- !! first name -->
+              <v-text-field
+                v-model="userName"
+                :rules="userNameRules"
+                label="First Name"
+                variant="outlined"
+              ></v-text-field>
+
+              <!-- !! last name -->
+              <v-text-field
+                v-model="userName"
+                :rules="userNameRules"
+                label="Last Name"
+                variant="outlined"
+              ></v-text-field>
+
+              <!-- !! Email -->
               <v-text-field
                 v-model="userName"
                 :rules="userNameRules"
@@ -21,10 +38,20 @@ import AppLayout from '@/components/layout/AppLayout.vue'
                 variant="outlined"
               ></v-text-field>
 
+              <!-- !! Password -->
               <v-text-field
                 v-model="password"
                 :rules="passwordRules"
                 label="Password"
+                variant="outlined"
+                type="password"
+              ></v-text-field>
+
+              <!-- !! Confirm Password -->
+              <v-text-field
+                v-model="password"
+                :rules="passwordRules"
+                label="Confirm Password"
                 variant="outlined"
                 type="password"
               ></v-text-field>
@@ -34,23 +61,19 @@ import AppLayout from '@/components/layout/AppLayout.vue'
                 variant="outlined"
                 rounded="xl"
                 size="x-large"
-                class="mt-2 mx-auto d-flex mb-5"
+                class="mt-2"
                 type="submit"
-                >Login</v-btn
+                >Register</v-btn
               >
-              <v-divider class="my-5"></v-divider>
               <p class="text-center mt-3">Forgot Password?</p>
               <br />
               <p class="text-center">
-                Don't have an account?
-                <RouterLink to="/register" class="text-primary"
-                  >Sign up</RouterLink
-                >
+                Already have an account?
+                <RouterLink to="/" class="text-primary">Login</RouterLink>
               </p>
               <br /> </v-form
           ></v-card>
-        </v-col>
-      </v-row>
-    </template>
+        </v-col> </v-row
+    ></template>
   </AppLayout>
 </template>
